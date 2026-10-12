@@ -1,0 +1,21 @@
+section.to-do > section.progress {
+    width: 60%;
+    height: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    /*background-color:white;*/
+    border-radius: 15px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+section.progress>div.progress {
+    width: 100%;
+    height:10px;
+    /*border:1px solid dimgrey;*/
+    border-radius:20px;
+    background-color:lavender;
+
+}
