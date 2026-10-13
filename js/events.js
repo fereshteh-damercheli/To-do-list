@@ -10,6 +10,7 @@ $("input").on("focus", function () {
     if ($(this).val().trim() === "") {
         $(this).css({
             "border": "2px solid brown",
+            "boxShadow": "none",
         })
         $('section.taskTitle>span.error').fadeIn()
     }
@@ -18,6 +19,7 @@ $("input").on("focus", function () {
     if ($(this).val().trim() !== "") {
         $(this).css({
             "border": "none",
+            "boxShadow": "none",
         })
         $('section.taskTitle>span.error').remove();
     }
@@ -41,12 +43,62 @@ $('section.addTask>button').on("click", function () {
         $('input[type=text]').val("")
     }else if ($('select').val() === "medium") {
         $('section.showTasks').append(`<li class="task"><span class="midPro">medium</span>${inputValue}
-
+<button class="done"><i class="fa-solid fa-check"></i> Done</button><button class="delete"><i class="fa-solid fa-trash-can"></i></button>
 </li>`)
         $('input[type=text]').val("")
     }else {
-        $('section.showTasks').append(`<li class="task"><span class="lowPro">low</span>${inputValue}</li>`)
+        $('section.showTasks').append(`<li class="task">
+<span class="lowPro">low</span>${inputValue}
+<button class="done">
+<i class="fa-solid fa-check"></i> Done
+</button>
+<button class="delete">
+<i class="fa-solid fa-trash-can"></i></button>
+</li>`)
         $('input[type=text]').val("")
     }
+
+    $('button.done').on("click", function () {
+        $(this).css({
+            "backgroundColor": "#68A691",
+            "color": "white",
+        })
+        $(this).find('i').css({
+            'color': 'white',
+        })
+        $(this).parent().fadeTo(300,0.4)
+
+    })
+    $('button.delete').on("click", function () {
+        $(this).css({
+            'font-size': '14px',
+        })
+        $(this).parent().fadeOut()
+
+    })
+
+
 })
+$('section.showTasks').on('mouseenter','.task',function () {
+    $(this).css({
+        // 'border': '1px solid #FFE5D4',
+        'background-color': '#eeeeee',
+        'transition': 'all 200ms linear',
+
+    }).find('.delete').css({
+        'backgroundColor': '#eeeeee',
+        'transition': 'all 200ms linear',
+
+    })
+    }).on('mouseleave','.task',function () {
+    $(this).css({
+        'background-color': 'white',
+    }).find('.delete').css({
+        'backgroundColor': 'white',
+        'transition': 'all 200ms linear',
+    })
+})
+
+
+
 

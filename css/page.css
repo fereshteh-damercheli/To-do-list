@@ -149,6 +149,7 @@ li {
     padding: 20px;
     box-sizing: border-box;
     font-family: 'main-regular';
+    color:dimgray;
     position:relative;
 
 }
@@ -217,4 +218,8 @@ button.delete{
 }
 button.delete>i{
     color:brown;
+}
+button.done>i{
+    color: #68A691;
+
 }
