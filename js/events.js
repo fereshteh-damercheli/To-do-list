@@ -2,7 +2,7 @@ $("input").on("focus", function () {
     $(this).css({
             "border": "none",
             "boxShadow": "10px 10px 10px #FFE5D4",
-            "background-color": "##FFE5D4",
+            "background-color": "#FFE5D4",
 
         }
     )
@@ -21,54 +21,49 @@ $("input").on("focus", function () {
             "border": "none",
             "boxShadow": "none",
         })
-        $('section.taskTitle>span.error').remove();
+        $('section.taskTitle>span.error').fadeOut();
     }
 })
+// Add task click handler
 $('section.addTask>button').on("click", function () {
-    let inputValue = $('input').val();
-    $(this).addClass("active")
+    let input = $('input[type=text]')
+// events for appearance os button
+    let btn = $(this)
+    btn.addClass("active")
     setTimeout(function () {
-        $('button').removeClass("active")
-    }, 300)
+        btn.removeClass("active")
+    }, 250)
+
+    let inputValue = input.val().trim(); //make input box empty after click and add task
+
+
     if (inputValue === "") {
-        $('input[type=text]').css({
+        input.css({
             "border": "2px solid brown",
         })
         $('section.taskTitle>span.error').fadeIn()
-
-    } else if ($('select').val() === "high") {
-        $('section.showTasks').prepend(`<li class="task"><span class="highPro">High</span>${inputValue}
-<button class="done"><i class="fa-solid fa-check"></i> Done</button><button class="delete"><i class="fa-solid fa-trash-can"></i></button>
-</li>`)
-        $('input[type=text]').val("")
-        updateProgress()
-
-    } else if ($('select').val() === "medium") {
-        $('section.showTasks').append(`<li class="task"><span class="midPro">medium</span>${inputValue}
-<button class="done"><i class="fa-solid fa-check"></i> Done</button><button class="delete"><i class="fa-solid fa-trash-can"></i></button>
-</li>`)
-        $('input[type=text]').val("")
-        updateProgress()
-
-    } else {
-        $('section.showTasks').append(`<li class="task">
-<span class="lowPro">low</span>${inputValue}
-<button class="done">
-<i class="fa-solid fa-check"></i> Done
-</button>
-<button class="delete">
-<i class="fa-solid fa-trash-can"></i></button>
-</li>`)
-        $('input[type=text]').val("")
-        updateProgress()
-
     }
 
+    let priority = $('select').val()      // high | medium | low
+    let li = $(`<li class="task">
+        <span class="${priority}Pro">${priority}</span>
+        <span class="title"></span>
+        <button class="done"><i class="fa-solid fa-check"></i> Done</button>
+        <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
+    </li>`).hide()
 
+    li.find('.title').text(inputValue)
 
+    if (priority === 'high') $('section.showTasks').prepend(li)
+    else $('section.showTasks').append(li)
 
+    li.fadeIn(300)
+    input.val('')
+    updateProgress()
 })
-$("section.showTasks").on("click",".done", function () {
+
+
+$("section.showTasks").on("click", ".done", function () {
     let li = $(this).closest('li');
     if (li.hasClass('completed')) {
         li.removeClass('completed')
@@ -94,7 +89,7 @@ $("section.showTasks").on("click",".done", function () {
     updateProgress()
 
 })
-$(".showTasks").on("click",".delete" ,function () {
+$(".showTasks").on("click", ".delete", function () {
     $(this).css({
         'font-size': '14px',
     })
@@ -130,7 +125,7 @@ let updateProgress = () => {
     $('.progress-bar').stop().animate({
         width: percent + "%",
     }, 500)
-    $('.progressText').text(done + " of " + total + " done (" + percent + "% )")
+    $('.progressText').text(done + " of " + total + " done (" + percent + "%)")
 }
 updateProgress()
 
