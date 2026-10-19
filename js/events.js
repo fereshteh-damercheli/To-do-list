@@ -1,9 +1,8 @@
 $("input").on("focus", function () {
     $(this).css({
             "border": "none",
-            "boxShadow": "10px 10px 10px #FFE5D4",
-            "background-color": "#FFE5D4",
-
+            // "boxShadow": "10px 10px 10px #FFE5D4",
+            // "background-color": "",
         }
     )
 }).on("blur", function () {
@@ -18,7 +17,7 @@ $("input").on("focus", function () {
 }).on('input', function () {
     if ($(this).val().trim() !== "") {
         $(this).css({
-            "border": "none",
+            "border": "2px solid white",
             "boxShadow": "none",
         })
         $('section.taskTitle>span.error').fadeOut();
@@ -101,17 +100,17 @@ $(".showTasks").on("click", ".delete", function () {
 $('section.showTasks').on('mouseenter', '.task', function () {
     $(this).css({
         // 'border': '1px solid #FFE5D4',
-        'background-color': '#eeeeee',
+        'background-color': 'var(--hover)',
         'transition': 'all 200ms linear',
 
     }).find('.delete').css({
-        'backgroundColor': '#eeeeee',
+        'backgroundColor': 'var(--hover)',
         'transition': 'all 200ms linear',
 
     })
 }).on('mouseleave', '.task', function () {
     $(this).css({
-        'background-color': 'white',
+        'background-color': 'var(--background)',
     }).find('.delete').css({
         'backgroundColor': 'white',
         'transition': 'all 200ms linear',

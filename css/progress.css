@@ -1,5 +1,5 @@
 section.to-do > section.progress {
-    width: 60%;
+    width: 80%;
     height: 50px;
     display: flex;
     flex-direction: column;
@@ -16,13 +16,13 @@ section.progress>div.container {
     height:10px;
     /*border:1px solid dimgrey;*/
     border-radius:20px;
-    background-color:lavender;
+    background-color:var(--background);
 
 }
 .progress-bar{
     width: 0;
     height:100%;
-    background-color:#68A691;
+    background-color:var(--text-color);
     border-radius:20px;
 }
 section.progress>div.text {
