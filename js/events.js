@@ -33,7 +33,7 @@ $('section.addTask>button').on("click", function () {
         btn.removeClass("active")
     }, 250)
 
-    let inputValue = input.val().trim(); //make input box empty after click and add task
+    let inputValue = input.val().trim();
 
 
     if (inputValue === "") {
@@ -41,6 +41,7 @@ $('section.addTask>button').on("click", function () {
             "border": "2px solid brown",
         })
         $('section.taskTitle>span.error').fadeIn()
+        return
     }
 
     let priority = $('select').val()      // high | medium | low
@@ -69,16 +70,16 @@ $("section.showTasks").on("click", ".done", function () {
         li.fadeTo(300, 1)
         $(this).css({
             "backgroundColor": "white",
-            "color": "#68A691",
+            "color": "var(--text-color)",
         })
         $(this).find('i').css({
-            'color': '#68A691',
+            'color': 'var(--text-color)',
         })
     } else {
         li.addClass('completed')
-        $(this).parent().fadeTo(300, 0.4)
+        $(this).parent().fadeTo(300, 0.5)
         $(this).css({
-            "backgroundColor": "#68A691",
+            "backgroundColor": "var(--text-color)",
             "color": "white",
         })
         $(this).find('i').css({
@@ -112,7 +113,7 @@ $('section.showTasks').on('mouseenter', '.task', function () {
     $(this).css({
         'background-color': 'var(--background)',
     }).find('.delete').css({
-        'backgroundColor': 'white',
+        'backgroundColor': 'var(--background)',
         'transition': 'all 200ms linear',
     })
 })
