@@ -62,6 +62,7 @@ $('section.addTask>button').on("click", function () {
     li.fadeIn(300)
     input.val('')
     updateProgress()
+    saveTasks()
 })
 
 
@@ -89,6 +90,7 @@ $("section.showTasks").on("click", ".done", function () {
         })
     }
     updateProgress()
+    saveTasks()
 
 })
 $(".showTasks").on("click", ".delete", function () {
@@ -98,6 +100,7 @@ $(".showTasks").on("click", ".delete", function () {
     $(this).parent().fadeOut(300, function () {
         $(this).remove()
         updateProgress()
+        saveTasks()
     })
 })
 $('section.showTasks').on('mouseenter', '.task', function () {
@@ -129,7 +132,51 @@ let updateProgress = () => {
     }, 500)
     $('.progressText').text(done + " of " + total + " done (" + percent + "%)")
 }
+
+const saveTasks = () => {
+    console.log('saveTasks is running')
+    let tasks = []
+
+    $('.task').each(function () {
+        tasks.push({
+            title: $(this).find('.title').text(),
+            priority: $(this).find('span').first().text(),
+            completed: $(this).hasClass('completed')
+        })
+    })
+
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+    console.log('saved:', localStorage.getItem('tasks'))
+}
+const loadTasks = () => {
+    let saved = localStorage.getItem('tasks')
+    if (saved === null) return
+
+    let tasks = JSON.parse(saved)
+
+    tasks.forEach(function (task) {
+        let li = $(`<li class="task">
+            <span class="${task.priority}Pro">${task.priority}</span>
+            <span class="title"></span>
+            <button class="done"><i class="fa-solid fa-check"></i> Done</button>
+            <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
+        </li>`)
+
+        li.find('.title').text(task.title)
+        $('section.showTasks').append(li)
+
+        if (task.completed) {
+            li.find('.done').trigger('click')
+        }
+
+    })
+
+    updateProgress()
+    saveTasks()
+
+}
 updateProgress()
+loadTasks()
 
 
 
