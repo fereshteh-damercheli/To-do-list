@@ -1,3 +1,4 @@
+
 $("input").on("focus", function () {
     $(this).css({
             "border": "none",
@@ -23,6 +24,7 @@ $("input").on("focus", function () {
         $('section.taskTitle>span.error').fadeOut();
     }
 })
+
 // Add task click handler
 $('section.addTask>button').on("click", function () {
     let input = $('input[type=text]')

@@ -251,3 +251,263 @@ button.done>i{
     color: var(--text-color);
 
 }
+@media(max-width:600px){
+    body{
+        background-color: var(--background);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+    section.to-do {
+        width: 80%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /*text-align: center;*/
+        background-color:rgba(255,255,255,0.45);
+        border:1px solid rgba(255,255,255,0.6);
+        border-radius: 10px;
+    }
+
+    section.to-do > section.topic {
+        width: 80%;
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 20px;
+
+    }
+
+    section.to-do > section.addTask {
+        width: 80%;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        text-align: center;
+        background-color: var(--background);
+        border-radius: 10px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        border: 1px solid rgba(255,255,255,0.8);
+    }
+
+    h1 {
+        font-family: 'main';
+
+    }
+
+    i {
+        color: var(--text-color);
+    }
+
+    section.to-do > section.addTask > section.taskTitle {
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'main-regular';
+        position: relative;
+    }
+
+    input[type=text] {
+        width: 70%;
+        height: 40px;
+        border: 2px solid white;
+        border-radius: 10px;
+        padding: 0 10px;
+        background-color: var(--background);
+        margin: 10px 0;
+        box-sizing: border-box;
+    }
+    input[type=text]::placeholder {
+        color: var(--text-color);
+        opacity: 0.6;
+    }
+    section.to-do > section.addTask > section.taskTitle>label{
+        width: 30%;
+        font-family: 'main-regular';
+        color: var(--text-color);
+        font-weight: bold;
+        letter-spacing: 1px;
+        font-size: 14px;
+    }
+
+    section.to-do > section.addTask > section.priority {
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'main-regular';
+    }
+    section.to-do > section.addTask > section.priority>label{
+        width: 30%;
+        font-family: 'main-regular';
+        color: var(--text-color);
+        font-weight: bold;
+        letter-spacing: 1px;
+        font-size: 14px;
+    }
+    select {
+        width: 100%;
+        height: 40px;
+        border: 2px solid white;
+        border-radius: 10px;
+        padding: 0 10px;
+        background-color: var(--background);
+        margin: 10px 0;
+        box-sizing: border-box;
+        color:var(--text-color);
+        font-family: 'main-regular';
+
+    }
+
+    section.to-do > section.addTask > section.priority > select > option {
+        background-color: var(--background);
+        border-radius: 15px;
+        box-sizing: border-box;
+        color: dimgrey;
+        border: none;
+    }
+
+    section.to-do > section.addTask > button {
+        width: 50%;
+        height: 40px;
+        border: none;
+        border-radius: 10px;
+        padding: 0 10px;
+        background-color: var(--text-color);
+        margin: 20px 0 0 0;
+        box-sizing: border-box;
+        color: white;
+
+    }
+
+    span.error {
+        color: brown;
+        font-size: 12px;
+        display: none;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        left: 80px;
+        top: 55px;
+    }
+
+
+
+    .active {
+        box-shadow: inset -2px -2px 5px gray, inset 2px 2px 5px gray;
+        transition: all 50ms linear;
+
+    }
+
+    section.to-do > section.showTasks {
+        width: 80%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+
+    }
+
+    li {
+        width: 100%;
+        min-height: 50px;
+        background-color: var(--background);
+        border-radius: 10px;
+        border: 1px solid rgba(255,255,255,0.8);
+        margin-bottom: 10px;
+        list-style: none;
+        padding: 20px;
+        box-sizing: border-box;
+        font-family: 'main-regular';
+        color:dimgray;
+        position:relative;
+
+    }
+    .highPro{
+        width:50px;
+        height: 50px;
+        border-radius:50px;
+        background-color: var(--azul);
+        color:var(--background);
+        box-sizing: border-box;
+        margin-right: 50px;
+        font-size: 12px;
+        padding: 8px;
+    }
+    .mediumPro{
+        width:50px;
+        height: 50px;
+        border-radius:50px;
+        background-color: var(--hover);
+        color:var(--text-color);
+        box-sizing: border-box;
+        margin-right: 50px;
+        font-size: 12px;
+        padding: 8px;
+    }
+    .lowPro{
+        width:50px;
+        height: 50px;
+        border-radius:50px;
+        background-color: var(--button-color);
+        color:var(--background);
+        box-sizing: border-box;
+        margin-right: 50px;
+        font-size: 12px;
+        padding: 8px;
+    }
+    button.done{
+        background-color:white;
+        font-family: 'main-regular';
+        padding: 5px;
+        box-sizing: border-box;
+        color: var(--text-color);
+        border:2px solid   var(--text-color);;
+        border-radius: 10px;
+        position: absolute;
+        right:50px;
+        top:20px;
+    }
+    button.delete{
+        width:30px;
+        height: 30px;
+        background-color:var(--background);
+        font-family: 'main-regular';
+        padding: 5px;
+        box-sizing: border-box;
+        color: var(--text-color);
+        border:none;
+        /*border-radius:20px;*/
+        text-align: center;
+        font-size: 15px;
+        line-height: 10px;
+        margin-left: 5px;
+        position: absolute;
+        right:10px;
+        top:20px;
+    }
+    button.delete>i{
+        color: var(--text-color);
+    }
+    button.done>i{
+        color: var(--text-color);
+
+    }
+
+}
